@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<p><% @page.ancestors.each do |x| %>
+	<%= link_to x.title, display_url(x.path) %>
+<% end %></p>
+
+
+<div id="submenu">
+  <%= render 'submenu_pages', pages: @page.children %>
+</div>
+
 <p>
   <b>Title:</b>
   <%= @page.title %>

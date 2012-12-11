@@ -20,6 +20,7 @@ class PagesController < ApplicationController
       format.json { render json: @page }
     end
   end
+  
   # GET /pages/1
   # GET /pages/1.json
   def display

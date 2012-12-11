@@ -1,7 +1,7 @@
 Slug2::Application.routes.draw do
   resources :pages
 
-  match "*path", :to => "pages#display"
+  match "*path", :to => "pages#display", :as => :display
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

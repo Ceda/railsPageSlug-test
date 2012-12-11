@@ -22,7 +22,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'acts_as_tree'
+gem 'awesome_nested_set'
 gem "friendly_id", "~> 4.0.1"
 
 
