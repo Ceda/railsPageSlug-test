@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="menu">
+	<ul id="menu">
+	  <% Page.roots.each do |page| %>
+	    <li><%= link_to page.title, display_url(page.path), class: ("active" if @page.root == page) %></li>
+	  <% end %>
+	</ul>
+</div>
+
 <p><% @page.ancestors.each do |x| %>
 	<%= link_to x.title, display_url(x.path) %>
 <% end %></p>

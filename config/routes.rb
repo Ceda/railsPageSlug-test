@@ -1,7 +1,11 @@
 Slug2::Application.routes.draw do
+  resources :items
+  resources :categories
   resources :pages
+  
+  match "*path", :to => "categories#display", :as => :display
 
-  match "*path", :to => "pages#display", :as => :display
+  # match "*path", :to => "pages#display", :as => :display
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

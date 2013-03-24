@@ -1,0 +1,41 @@
+<%= form_for(@item) do |f| %>
+<% if @item.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+	<ul>
+		<% @item.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :title %><br />
+	<%= f.text_field :title %>
+</div>
+<div class="field">
+	<%= f.label :description %><br />
+	<%= f.text_area :description, :class => "tinymce" %>
+</div>
+<div class="field">
+	<%= f.label :price %><br />
+	<%= f.text_field :price %>
+</div>
+
+<div class="field">
+	<%= hidden_field_tag "product[category_ids][]", nil %>
+	<% Category.all.each do |category| %>
+	<%= check_box_tag "item[category_ids][]", category.id, @item.category_ids.include?(category.id), id: dom_id(category) %>
+	<%= label_tag dom_id(category), "#{'-' * category.level} #{category.title}"  %><br>
+	<% end %>
+</div>
+<%# nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.title}" } %>
+<% #f.select :category_ids, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.title}" }, { :include_blank => '-- None --' }, :multiple => true %>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
+<%= tinymce%>
+<% end %>

@@ -1,0 +1,41 @@
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+
+<p id="notice"><%= notice %></p>
+
+<p><% @category.self_and_ancestors.each do |x| %>
+	<%= link_to x.title, display_url(x.path) %> >
+<% end %></p>
+
+<p><% @category.children.each do |x| %>
+	<%= link_to x.title, display_url(x.path) %> | 
+<% end %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @category.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @category.content %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @category.parent_id %>
+</p>
+
+<b>Itemas:</b>
+<ul>
+  <% @items.each do |item| %>
+    <li><%= link_to item.title, item %></li>
+  <% end %>
+</ul>
+
+<%= debug @itemas %>
+
+
+<%= will_paginate @items  %>
+

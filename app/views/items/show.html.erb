@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Title:</b>
+  <%= @item.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= simple_format @item.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @item.price %>
+</p>
+
+<b>Categories:</b>
+<ul>
+  <% @item.categories.each do |category| %>
+    <li><%= link_to category.title, display_url(category.path) %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

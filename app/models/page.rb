@@ -4,8 +4,6 @@ class Page < ActiveRecord::Base
     
     extend FriendlyId
      friendly_id :title, :use => :scoped, :scope => :parent
-     
-     
 
      before_save :compute_path
      def compute_path
